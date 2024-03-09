@@ -11,8 +11,8 @@ class Command(BaseCommand):
         for path in doc_paths:
             with open(path, 'r', encoding='utf-8') as file:
                 text = file.read()
-                abstract_nouns = textrank(self, text)
+                textrank(self, text)
     
-                print("\n\n\n-Abstract Nouns:", "\n")
-                for noun in abstract_nouns:
-                    print(noun.text)
+                # print("\n\n\n-Abstract Nouns:", "\n")
+                # for noun in abstract_nouns:
+                #     print(noun.text)
