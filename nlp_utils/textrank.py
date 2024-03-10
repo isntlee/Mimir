@@ -1,19 +1,31 @@
 import spacy, pytextrank
 from nlp_utils.constraints import Constraint
 from apps.words.models import Word
+from concurrent.futures import ProcessPoolExecutor
 
 
-def textrank(self, path, text, *args, **kwargs):
+nlp = spacy.load("en_core_web_sm")
+nlp.add_pipe("textrank")
 
-    nlp = spacy.load("en_core_web_sm")
-    nlp.add_pipe("textrank")
+
+def process_text(path, text):
     doc = nlp(text)
-
+    words_to_save = []
 
     for sent in doc.sents:
         for token in sent:
             if Constraint.is_abstract_noun(token):
-                new_word = Word.create_word(name=token, sentence=sent, document=path, constraint='is_abstract_noun')
-                new_word.save()
+                print('token:', token)
+                words_to_save.append(Word(name=token, sentence=sent, document=path, constraint='is_abstract_noun'))
+   
+    Word.objects.bulk_create(words_to_save)
 
-                print(f"token: {token}")
+
+def textrank(self, text_objs, *args, **kwargs):
+    with ProcessPoolExecutor(max_workers=8) as executor:
+        results = executor.map(lambda obj: process_text(*obj), text_objs)
+        print('results', results)
+
+        for result in results:
+            print(result)
+
