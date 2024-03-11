@@ -15,6 +15,7 @@ class Command(BaseCommand):
         textrank(self, text_objs)
         self.write_to_csv(job_id)
 
+
     def get_document_paths(self, base_dir):
         return [os.path.join(base_dir, filename) for filename in os.listdir(base_dir) if filename.endswith('.txt')]
 
@@ -31,13 +32,15 @@ class Command(BaseCommand):
 
     def write_to_csv(self, job_id):
         with open('word_frequency.csv', 'w', newline='', encoding='utf-8') as csvfile:
-            most_frequent_words = Word.objects.filter(job_id=job_id).values_list('name').annotate(frequency=Count('name')).order_by('-frequency')[:20]
+            words_by_jobs = Word.objects.filter(job_id=job_id)
+            most_frequent_words = words_by_jobs.values_list('name').annotate(frequency=Count('name')).order_by('-frequency')[:20]
             fieldnames = ['Word Name', 'Frequency', 'Document Source', 'Sentence']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
+
             for word in most_frequent_words:
                 word_name, word_frequency = word[0], word[1]
-                word_list = Word.objects.filter(job_id=job_id).filter(name=word_name)
+                word_list = words_by_jobs.filter(name=word_name)
                 rows = [{'Word Name': word_name, 'Frequency': word_frequency}]
                 for word in word_list:
                     rows.append({'Document Source': word.document, 'Sentence': word.sentence[:30]})
