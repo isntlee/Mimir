@@ -15,12 +15,6 @@ class Word(models.Model):
     def __str__(self):  
         return self.name
     
-    class Meta:
-        indexes = [
-            models.Index(fields=['name']),
-            models.Index(fields=['job_id']),
-        ]
-    
     @classmethod
     def create_word(cls, name, sentence, document, job_id, constraint, active=True):
         word = cls(id=id, name=name, sentence=sentence, document=document, job_id=job_id, constraint=constraint, active=active)
