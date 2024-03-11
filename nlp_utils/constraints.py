@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Constraint(models.Model):
 
     @staticmethod

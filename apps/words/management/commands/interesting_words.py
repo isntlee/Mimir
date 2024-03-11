@@ -1,6 +1,5 @@
 from django.core.management.base import BaseCommand
 from nlp_utils.textrank import textrank
-from nlp_utils.zero_shot import zero_shot
 import os
 
 class Command(BaseCommand):

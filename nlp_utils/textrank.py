@@ -1,7 +1,7 @@
 import spacy, pytextrank
 from nlp_utils.constraints import Constraint
 from apps.words.models import Word
-from concurrent.futures import ProcessPoolExecutor
+from concurrent.futures import ThreadPoolExecutor
 
 
 nlp = spacy.load("en_core_web_sm")
@@ -22,10 +22,6 @@ def process_text(path, text):
 
 
 def textrank(self, text_objs, *args, **kwargs):
-    with ProcessPoolExecutor(max_workers=8) as executor:
+    with ThreadPoolExecutor(max_workers=8) as executor:
         results = executor.map(lambda obj: process_text(*obj), text_objs)
-        print('results', results)
-
-        for result in results:
-            print(result)
 
