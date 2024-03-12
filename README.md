@@ -24,6 +24,7 @@ This is a Django-based NLP interpreter built with spaCy and textrank. It process
 
  **Adaptive data folder**
 - Data folder, where text files are read/processed. Add manually, see location:
+
     ```
     mimir\data\text_data
     ```
@@ -100,7 +101,7 @@ Please note - in order to run this project locally on your own system, you will 
     ```
 12. Find the SECRET_KEY and DEBUG variables in the core/settings.py file. You'll find two sets of SECRET_KEY and DEBUG variables: commented out and uncommented. You should comment out the uncommented, and vice-versa.
 
-13. Finally, set the variables in your .env file. Set SECRET_KEY to the text found in secret_key.txt, remember to add '' as it should be a string. Set DEBUG to whatever you prefer, there are no security problems with DEBUG = 'True' in development. Do change for production. 
+13. Finally, set the variables in your .env file. Set SECRET_KEY to the text found in secret_key.txt, remember to add '' as it should be a string. Set DEBUG to whatever you prefer, there are no security problems with DEBUG = 'True' in development. However, do change for production. 
 
 <br>
 
@@ -114,7 +115,6 @@ Please note - in order to run this project locally on your own system, you will 
 
 The User model utilized for this project is the standard one provided by **`django.contrib.auth.models`**
 
-\
 **Word model**
 
 | Name | Key in DB | Validation | Field Type |
@@ -125,6 +125,5 @@ Document  | document  | max_length=250 | CharField
 Job_ID   | job_id   | max_length=250, null=True | CharField
 Constraint  | constraint  | max_length=250 | CharField
 Active | active | default=True, null=True | BooleanField
-ID | id | primary_key=True, default=uuid.uuid4, editable=False | UUIDField
 
 <br>

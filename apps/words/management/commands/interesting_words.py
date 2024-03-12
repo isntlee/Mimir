@@ -8,7 +8,7 @@ from apps.words.models import Word
 class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
-        base_dir = "data/initial_data"
+        base_dir = "data/text_data"
         doc_paths = self.get_document_paths(base_dir)
         job_id = uuid.uuid4()
         text_objs = self.read_docs(doc_paths, job_id)
@@ -56,8 +56,7 @@ class Command(BaseCommand):
                         'Word Name': '', 
                         'Frequency': '',
                         'Document Source': '',
-                        'Sentence Source': word.sentence[:30]+'...',
-                        # This will be removed before submission
+                        'Sentence Source': word.sentence[:30],
                     })
 
             writer.writerows(words_data)
