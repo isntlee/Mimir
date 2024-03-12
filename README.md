@@ -15,14 +15,12 @@ This is a Django-based NLP interpreter built with spaCy and textrank. It process
 
 ## Features:
 
-**Interesting words command**
-- A utility command to trigger scaPy text processing.
-- To run this management command, add below to terminal:
+**Management command**
+- A utility command to trigger scaPy text processing. To run this management command, add below to terminal:
 
     ```
     python manage.py interesting_words
     ```
- - _Warning : **This command may differ** depending on operating system, the command required could be **python3** or **py**_
 
  **Adaptive data folder**
 - Data folder, where text files are read/processed. Add manually, see location:
@@ -37,12 +35,11 @@ This is a Django-based NLP interpreter built with spaCy and textrank. It process
 - **Python**    
     - [Python 3.11.0](https://www.python.org/) - Used as base language.
 - **Django**
-    - [Django 4.2.8](https://www.djangoproject.com/) - A Python web framework for rapid development.
-    - [Django REST 3.14.0](https://www.django-rest-framework.org/) - Django-based toolkit for building Web APIs.
+    - [Django 4.2.11](https://www.djangoproject.com/) - A Python web framework for rapid development.
 - **SpaCY**
-    - [spaCy](https://spacy.io//) - spaCy is an open-source library for Natural Language Processing in Python.
+    - [spaCy 3.7.4](https://spacy.io//) - spaCy is an open-source library for Natural Language Processing in Python.
 - **Database**
-    - [SQlite3](https://www.sqlite.org/index.html) - For a development database, provided by Django.
+    - [SQlite 3.38.4](https://www.sqlite.org/index.html) - For a development database, provided by Django.
 
 
 <br>
@@ -109,7 +106,7 @@ Please note - in order to run this project locally on your own system, you will 
 
 ## Database Design:
 
-- [SQlite3](https://www.sqlite.org/index.html) - For development database, provided by Django.
+- [SQlite](https://www.sqlite.org/index.html) - For development database, provided by Django.
 
 ### Data Models:
 
