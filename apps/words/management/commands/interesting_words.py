@@ -48,7 +48,7 @@ class Command(BaseCommand):
                     'Word Name': word_name,
                     'Frequency': word_frequency,
                     'Document Source': ', '.join(sorted(document_sources)),
-                    'Sentence': ''
+                    'Sentence Source': ''
                 })
 
                 for word in word_list:
@@ -56,7 +56,7 @@ class Command(BaseCommand):
                         'Word Name': '', 
                         'Frequency': '',
                         'Document Source': '',
-                        'Sentence': word.sentence[:30]+'...',
+                        'Sentence Source': word.sentence[:30]+'...',
                         # This will be removed before submission
                     })
 
