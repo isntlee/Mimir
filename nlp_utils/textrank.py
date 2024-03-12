@@ -21,7 +21,7 @@ def process_text(path, text, job_id):
         Word.objects.bulk_create(words_to_save)
         
     except Exception as e:
-        raise(f"Error processing text for job {job_id}: {e}")
+        raise(f"Error in processing for job {job_id}: {e}")
 
 
 def textrank(self, text_objs):
@@ -29,4 +29,4 @@ def textrank(self, text_objs):
         for obj in text_objs:
             process_text(*obj)
     except Exception as e:
-        raise(f"Error in textrank process: {e}")
+        raise(f"Error in textrank process call: {e}")

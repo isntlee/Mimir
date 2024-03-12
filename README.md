@@ -16,14 +16,14 @@ This is a Django-based NLP interpreter built with spaCy and textrank. It process
 ## Features:
 
 **Management command**
-- A utility command to trigger scaPy text processing. To run this management command, add below to terminal:
+- A utility command to trigger spaCy text processing. To run this command, add below to terminal:
 
     ```
     python manage.py interesting_words
     ```
 
  **Adaptive data folder**
-- Data folder, where text files are read/processed. Add manually, see location:
+- Data folder, where text files are read/processed from. Add manually, see location:
 
     ```
     mimir\data\text_data
@@ -38,7 +38,7 @@ This is a Django-based NLP interpreter built with spaCy and textrank. It process
 - **Django**
     - [Django 4.2.11](https://www.djangoproject.com/) - A Python web framework for rapid development.
 - **SpaCY**
-    - [spaCy 3.7.4](https://spacy.io//) - spaCy is an open-source library for Natural Language Processing in Python.
+    - [spaCy 3.7.4](https://spacy.io//) - spaCy is an open-source library for natural language processing in Python.
 - **Database**
     - [SQlite 3.38.4](https://www.sqlite.org/index.html) - For a development database, provided by Django.
 
@@ -115,6 +115,7 @@ Please note - in order to run this project locally on your own system, you will 
 
 The User model utilized for this project is the standard one provided by **`django.contrib.auth.models`**
 
+\
 **Word model**
 
 | Name | Key in DB | Validation | Field Type |
