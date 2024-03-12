@@ -31,8 +31,8 @@ class Command(BaseCommand):
 
 
     def write_to_csv(self, job_id):
-        with open('word_frequency.csv', 'w', newline='', encoding='utf-8') as csvfile:
-            fieldnames = ['Word Name', 'Frequency', 'Document Source', 'Sentence']
+        with open('interesting_words.csv', 'w', newline='', encoding='utf-8') as csvfile:
+            fieldnames = ['Word Name', 'Frequency', 'Document Source', 'Sentence Source']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
 
