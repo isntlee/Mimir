@@ -1,8 +1,6 @@
 .env
-.coverage
-.htmlcov
 __pycache__
 *.csv
 *.pyc
 *.sqlite3
-\initial_data
+secret_key.txt

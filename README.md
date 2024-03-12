@@ -1,7 +1,7 @@
 
 # **Mimir**
 
-This is a Django-based NLP interpreter built with spaCy and textrank. It processes text files extracting a requested scaPy token type. The extracted data, including tokens and their associated metadata, is persisted and used to generate csv files enabling easy export.     
+A Django-based NLP interpreter built with spaCy and PyTextRank. It processes text files by extracting specified spaCy token types. The extracted data, including tokens and their associated metadata, is persisted and used to generate csv files enabling easy export.    
 
 <br>
 
@@ -38,7 +38,7 @@ This is a Django-based NLP interpreter built with spaCy and textrank. It process
 - **Django**
     - [Django 4.2.11](https://www.djangoproject.com/) - A Python web framework for rapid development.
 - **SpaCY**
-    - [spaCy 3.7.4](https://spacy.io//) - spaCy is an open-source library for natural language processing in Python.
+    - [spaCy 3.7.4](https://spacy.io//) - An open-source library for natural language processing in Python.
 - **Database**
     - [SQlite 3.38.4](https://www.sqlite.org/index.html) - For a development database, provided by Django.
 
