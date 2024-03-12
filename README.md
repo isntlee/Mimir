@@ -15,6 +15,20 @@ This is a Django-based NLP interpreter built with spaCy and textrank. It process
 
 ## Features:
 
+**Interesting words command**
+- A utility command to trigger scaPy text processing.
+- To run this management command, add below to terminal:
+
+    ```
+    python manage.py interesting_words
+    ```
+ - _Warning : **This command may differ** depending on operating system, the command required could be **python3** or **py**_
+
+ **Adaptive data folder**
+- Data folder, where text files are read/processed. Add manually, see location:
+    ```
+    mimir\data\text_data
+    ```
 
 <br>
 
@@ -25,7 +39,7 @@ This is a Django-based NLP interpreter built with spaCy and textrank. It process
 - **Django**
     - [Django 4.2.8](https://www.djangoproject.com/) - A Python web framework for rapid development.
     - [Django REST 3.14.0](https://www.django-rest-framework.org/) - Django-based toolkit for building Web APIs.
-- **spaCY**
+- **SpaCY**
     - [spaCy](https://spacy.io//) - spaCy is an open-source library for Natural Language Processing in Python.
 - **Database**
     - [SQlite3](https://www.sqlite.org/index.html) - For a development database, provided by Django.
@@ -72,26 +86,24 @@ Please note - in order to run this project locally on your own system, you will 
     ```
     python manage.py createsuperuser
     ```
-8. Enter these details for the initial superuser. Ignore all warnings, don't add an email. Change the User password afterwards as this password is exposed.
-
-9. You can now run the program locally with the following command: 
+8. You can now run the program locally with the following command: 
     ```
     python manage.py runserver
      ```
-10. Once the program is running, go to localhost and add `/admin/` to the end of the url. Here log in with the initial superuser account.
+9. Once the program is running, go to localhost and add `/admin/` to the end of the url. Here log in with the initial superuser account.
 
-11. Create env.py file at root level where you can store your sensitive information for the app. Add these details to that file:
+10. Create env.py file at root level where you can store your sensitive information for the app. Add these details to that file:
     ```
     SECRET_KEY = "SECRET_KEY"
     DEBUG = "DEBUG"
     ```
-12. Create a new and truly secret key, which will be generated in a secret_key.txt file at root level, with this command:
+11. Create a new and truly secret key, which will be generated in a secret_key.txt file at root level, with this command:
     ```
     python core/generate_key.py
     ```
-13. Find the SECRET_KEY and DEBUG variables in the core/settings.py file. You'll find two sets of SECRET_KEY and DEBUG variables: commented out and uncommented. You should comment out the uncommented, and vice-versa.
+12. Find the SECRET_KEY and DEBUG variables in the core/settings.py file. You'll find two sets of SECRET_KEY and DEBUG variables: commented out and uncommented. You should comment out the uncommented, and vice-versa.
 
-14. Finally, set the variables in your .env file. Set SECRET_KEY to the text found in secret_key.txt, remember to add '' as it should be a string. Set DEBUG to whatever you prefer, there are no security problems with DEBUG = 'True' in development. Do change for production. 
+13. Finally, set the variables in your .env file. Set SECRET_KEY to the text found in secret_key.txt, remember to add '' as it should be a string. Set DEBUG to whatever you prefer, there are no security problems with DEBUG = 'True' in development. Do change for production. 
 
 <br>
 
@@ -101,7 +113,7 @@ Please note - in order to run this project locally on your own system, you will 
 
 ### Data Models:
 
-**Users**
+**User model**
 
 The User model utilized for this project is the standard one provided by **`django.contrib.auth.models`**
 
