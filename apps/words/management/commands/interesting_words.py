@@ -32,16 +32,32 @@ class Command(BaseCommand):
 
     def write_to_csv(self, job_id):
         with open('word_frequency.csv', 'w', newline='', encoding='utf-8') as csvfile:
-            words_by_jobs = Word.objects.filter(job_id=job_id)
-            most_frequent_words = words_by_jobs.values_list('name').annotate(frequency=Count('name')).order_by('-frequency')[:20]
             fieldnames = ['Word Name', 'Frequency', 'Document Source', 'Sentence']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
 
+            words_by_jobs = Word.objects.filter(job_id=job_id)
+            most_frequent_words = words_by_jobs.values_list('name').annotate(frequency=Count('name')).order_by('-frequency')[:20]
+            words_data = []
+            
             for word in most_frequent_words:
                 word_name, word_frequency = word[0], word[1]
                 word_list = words_by_jobs.filter(name=word_name)
-                rows = [{'Word Name': word_name, 'Frequency': word_frequency}]
+                document_sources = set(word.document for word in word_list)
+                words_data.append({
+                    'Word Name': word_name,
+                    'Frequency': word_frequency,
+                    'Document Source': ', '.join(sorted(document_sources)),
+                    'Sentence': ''
+                })
+
                 for word in word_list:
-                    rows.append({'Document Source': word.document, 'Sentence': word.sentence[:30]})
-                writer.writerows(rows)
+                    words_data.append({
+                        'Word Name': '', 
+                        'Frequency': '',
+                        'Document Source': '',
+                        'Sentence': word.sentence[:30]+'...',
+                        # This will be removed before submission
+                    })
+
+            writer.writerows(words_data)

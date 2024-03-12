@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Constraint(models.Model):
 
     @staticmethod
@@ -9,3 +10,7 @@ class Constraint(models.Model):
 
     def __str__(self):
         return self.name
+    
+    constraint_methods = {
+    1 : (is_abstract_noun, 'is_abstract_noun')
+    }
