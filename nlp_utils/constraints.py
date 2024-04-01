@@ -2,12 +2,12 @@ from django.db import models
 from abc import ABC, abstractmethod
 
 
-class ConstraintStrategy(ABC):
+class ConstraintBase(ABC):
     @abstractmethod
     def apply(self, token):
         pass
 
-class AbstractNounStrategy(ConstraintStrategy):
+class AbstractNoun(ConstraintBase):
     def apply(self, token):
         abstract_structure = ('acy', 'ncy', 'ence', 'ism', 'ity', 'hood', 'ment', 'ness', 'ship', 'sion', 'phy')
         return token.pos_ == 'NOUN' and token.suffix_ in abstract_structure
@@ -16,7 +16,7 @@ class AbstractNounStrategy(ConstraintStrategy):
 CONSTRAINT_CHOICES = {
     1: {
         'name': 'abstract nouns',
-        'strategy': AbstractNounStrategy
+        'strategy': AbstractNoun
     },
 }
 
@@ -35,7 +35,7 @@ class Constraint(models.Model):
         print("\nWhat interesting words to find:")
         for key, value in CONSTRAINT_CHOICES.items():
             print(f"{key}: {value['name']}")
-        user_choice = int(input("\nEnter the number choice here: "))
+        user_choice = int(input("\nEnter the numbered choice here: "))
         if user_choice in CONSTRAINT_CHOICES:
             return CONSTRAINT_CHOICES[user_choice]['strategy']()
         else:

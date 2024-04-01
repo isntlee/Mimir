@@ -19,7 +19,7 @@ def process_text(path, text, job_id):
                     id = uuid.uuid4()
                     words_to_save.append(Word(id=id, name=token, sentence=sent, document=path, job_id=job_id, constraint=constraint.__class__.__name__))
 
-        Word.objects.bulk_create(words_to_save)
+        Word.objects.bulk_create(words_to_save, batch_size=100)
         
     except Exception as e:
         raise(f"Error in processing for job {job_id}: {e}")
