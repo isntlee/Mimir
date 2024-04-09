@@ -1,4 +1,5 @@
 import uuid, spacy, pytextrank
+from concurrent.futures import ThreadPoolExecutor
 from nlp_utils.constraints import Constraint
 from apps.words.models import Word
 
@@ -27,7 +28,7 @@ def process_text(path, text, job_id):
 
 def textrank(self, text_objs):
     try:
-        for obj in text_objs:
-            process_text(*obj)
+        with ThreadPoolExecutor(max_workers=4) as executor:
+            results = executor.map(lambda obj: process_text(*obj), text_objs)
     except Exception as e:
-        raise(f"Error in textrank process call: {e}")
+        raise(f"Error in textrank process: {e}")
