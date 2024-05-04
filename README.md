@@ -39,6 +39,8 @@ A Django-based NLP interpreter built with spaCy and PyTextRank. It processes tex
     - [Django 4.2.11](https://www.djangoproject.com/) - A Python web framework for rapid development.
 - **SpaCY**
     - [spaCy 3.7.4](https://spacy.io//) - An open-source library for natural language processing in Python.
+- **Poetry**
+    - [Poetry 1.8.3](https://python-poetry.org/) - For dependency management and packaging in Python.
 - **Database**
     - [SQlite 3.38.4](https://www.sqlite.org/index.html) - For a development database, provided by Django.
 
@@ -51,30 +53,28 @@ A Django-based NLP interpreter built with spaCy and PyTextRank. It processes tex
 
 Please note - in order to run this project locally on your own system, you will need the following installed:
 - [Python3](https://www.python.org/) to run the application.
-- [PIP](https://pip.pypa.io/en/stable/) to install app requirements.
+- [Poetry](https://python-poetry.org/docs/#installing-with-the-official-installer) to install app requirements.
 - [GIT](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) for version control.
 
 1. Clone the Mimir repository by either downloading from here or type the following command into your terminal:
     ```
     git clone https://github.com/isntlee/Mimir
     ```
-2. Stay in your current folder, don't navigate into Mimir yet
-
-3. A virtual environment is recommended for the Python interpreter. Enter the command:
+2. Navigate into Mimir:
     ```
-    python -m venv venv
-    ```  
- - _Warning : **This Python command may differ** depending on operating system, the command required could be **python3** or **py**_
-
-4. Navigate into Mimir and initialize the virtual environment by using the following command: 
+    cd Mimir 
     ```
-    ..\venv\Scripts\Activate.ps1 
+3. Create a Poetry Project, creating a pyproject.toml file. Enter the command:
     ```
- - _Warning : **This command may differ** depending on your operating system_
-
+    poetry init
+    ```
 5. Install all the requirements and dependancies with the command:
     ```
-    pip install -r requirements.txt
+    poetry install
+    ``` 
+4. Activates the virtual environment managed with Poetry: 
+    ```
+    poetry shell 
     ```
 6. Migrate the admin models to create your database template with the terminal command:
     ```
