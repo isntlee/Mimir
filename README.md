@@ -64,11 +64,7 @@ Please note - in order to run this project locally on your own system, you will 
     ```
     cd Mimir 
     ```
-3. Create a Poetry Project, creating a pyproject.toml file. Enter the command:
-    ```
-    poetry init
-    ```
-5. Install all the requirements and dependancies with the command:
+3. Install all the requirements and dependancies with the command:
     ```
     poetry install
     ``` 
@@ -76,32 +72,32 @@ Please note - in order to run this project locally on your own system, you will 
     ```
     poetry shell 
     ```
-6. Migrate the admin models to create your database template with the terminal command:
+5. Migrate the admin models to create your database template with the terminal command:
     ```
     python manage.py migrate
     ```
-7. Create your superuser to access the django admin panel and database with the following command:
+6. Create your superuser to access the django admin panel and database with the following command:
     ```
     python manage.py createsuperuser
     ```
-8. You can now run the program locally with the following command: 
+7. You can now run the program locally with the following command: 
     ```
     python manage.py runserver
      ```
-9. Once the program is running, go to localhost and add `/admin/` to the end of the url. Here log in with the initial superuser account.
+8. Once the program is running, go to localhost and add `/admin/` to the end of the url. Here log in with the initial superuser account.
 
-10. Create env.py file at root level where you can store your sensitive information for the app. Add these details to that file:
+9. Create env.py file at root level where you can store your sensitive information for the app. Add these details to that file:
     ```
     SECRET_KEY = "SECRET_KEY"
     DEBUG = "DEBUG"
     ```
-11. Create a new and truly secret key, which will be generated in a secret_key.txt file at root level, with this command:
+10. Create a new and truly secret key, which will be generated in a secret_key.txt file at root level, with this command:
     ```
     python core/generate_key.py
     ```
-12. Find the SECRET_KEY and DEBUG variables in the core/settings.py file. You'll find two sets of SECRET_KEY and DEBUG variables: commented out and uncommented. You should comment out the uncommented, and vice-versa.
+11. Find the SECRET_KEY and DEBUG variables in the core/settings.py file. You'll find two sets of SECRET_KEY and DEBUG variables: commented out and uncommented. You should comment out the uncommented, and vice-versa.
 
-13. Finally, set the variables in your .env file. Set SECRET_KEY to the text found in secret_key.txt, remember to add '' as it should be a string. Set DEBUG to whatever you prefer, there are no security problems with DEBUG = 'True' in development. However, do change for production. 
+12. Finally, set the variables in your .env file. Set SECRET_KEY to the text found in secret_key.txt, remember to add '' as it should be a string. Set DEBUG to whatever you prefer, there are no security problems with DEBUG = 'True' in development. However, do change for production. 
 
 <br>
 
